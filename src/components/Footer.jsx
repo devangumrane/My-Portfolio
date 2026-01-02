@@ -3,35 +3,36 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import profileImage from "../assets/profile.png";
 
+// Defined outside the component for better performance
+const SOCIALS = [
+  {
+    name: "GitHub",
+    url: "https://github.com/ShallowAwe",
+    icon: FaGithub,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/Rudrankur_Indurkar",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Email",
+    url: "mailto:rudraindurkar670@gmail.com",
+    icon: FaEnvelope,
+  },
+];
+
+const QUICK_LINKS = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
+  { name: "Achievements", href: "#achievements" },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
-
-  const socials = [
-    {
-      name: "GitHub",
-      url: "https://github.com/ShallowAwe",
-      icon: FaGithub,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/Rudrankur_Indurkar",
-      icon: FaLinkedin,
-    },
-    {
-      name: "Email",
-      url: "mailto:rudraindurkar670@gmail.com",
-      icon: FaEnvelope,
-    },
-  ];
-
-  const quickLinks = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Education", href: "#education" },
-    { name: "Achievements", href: "#achievements" },
-  ];
 
   return (
     <footer
@@ -47,19 +48,25 @@ export default function Footer() {
         }}
       />
 
-      {/* Background Glow */}
+      {/* Dynamic Background Glow */}
       <motion.div
         animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.1, 0.05],
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(245, 158, 11, 0.1)" }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] -z-10 pointer-events-none"
+        style={{
+          // Uses your CSS variable so it changes color if you change the theme
+          background:
+            "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          opacity: 0.15,
+        }}
         aria-hidden="true"
       />
 
@@ -116,7 +123,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {QUICK_LINKS.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
@@ -145,7 +152,7 @@ export default function Footer() {
               Connect
             </h4>
             <ul className="flex items-center gap-4">
-              {socials.map(({ name, url, icon: Icon }, index) => (
+              {SOCIALS.map(({ name, url, icon: Icon }, index) => (
                 <motion.li
                   key={name}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -158,7 +165,7 @@ export default function Footer() {
                     aria-label={name}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_-5px_rgba(245,158,11,0.3)]"
+                    className="group relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_-5px_var(--color-primary)]"
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.03)",
                       border: "1px solid var(--color-border)",

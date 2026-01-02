@@ -1,0 +1,3 @@
+1. add a registration logic in the contact me section
+2. add a Download CV button in the Hero section
+3.[done] add a better theme switchee in the navbar

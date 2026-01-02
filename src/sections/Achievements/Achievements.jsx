@@ -1,136 +1,99 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import {
+  FaCheckCircle,
+  FaBolt,
+  FaUsers,
+  FaBriefcase,
+  FaArrowRight,
+} from "react-icons/fa";
+
+// --- Components & Data defined OUTSIDE to prevent re-renders ---
+
+const AnimatedCounter = ({ target, suffix, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isInView) {
+      let startTime = null;
+      const animate = (currentTime) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+
+        // Easing function for smooth stop (easeOutQuart)
+        const ease = 1 - Math.pow(1 - progress, 4);
+
+        setCount(Math.floor(target * ease));
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(target);
+        }
+      };
+      requestAnimationFrame(animate);
+    }
+  }, [isInView, target, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
+const ACHIEVEMENTS = [
+  {
+    metric: "99.8%",
+    target: 99, // Integer for counter
+    suffix: ".8%", // Static suffix
+    label: "Transaction Success",
+    description:
+      "Achieved in E-Commerce application through robust error handling",
+    icon: FaCheckCircle,
+  },
+  {
+    metric: "45%",
+    target: 45,
+    suffix: "%",
+    label: "Performance Boost",
+    description: "Reduced app startup time through optimized state management",
+    icon: FaBolt,
+  },
+  {
+    metric: "500+",
+    target: 500,
+    suffix: "+",
+    label: "Active Users",
+    description: "Serving users across multiple production applications",
+    icon: FaUsers,
+  },
+  {
+    metric: "10+",
+    target: 10,
+    suffix: "+",
+    label: "Projects Delivered",
+    description: "Successfully completed and deployed to production",
+    icon: FaBriefcase,
+  },
+];
+
+const ADDITIONAL_STATS = [
+  { value: "95%", label: "Code Quality" },
+  { value: "60%", label: "Faster Sync" },
+  { value: "Zero", label: "Missed Deadlines" },
+  { value: "100%", label: "Client Satisfaction" },
+];
 
 export default function Achievements() {
-  const achievements = [
-    {
-      metric: "99.8%",
-      target: 99.8,
-      suffix: "%",
-      label: "Transaction Success",
-      description:
-        "Achieved in E-Commerce application through robust error handling",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      metric: "45%",
-      target: 45,
-      suffix: "%",
-      label: "Performance Boost",
-      description:
-        "Reduced app startup time through optimized state management",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      ),
-    },
-    {
-      metric: "500+",
-      target: 500,
-      suffix: "+",
-      label: "Active Users",
-      description: "Serving users across multiple production applications",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      metric: "10+",
-      target: 10,
-      suffix: "+",
-      label: "Projects Delivered",
-      description: "Successfully completed and deployed to production",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-      ),
-    },
-  ];
-
-  const AnimatedCounter = ({ target, suffix, duration = 2000 }) => {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-    useEffect(() => {
-      if (isInView) {
-        let startTime = null;
-        const animate = (currentTime) => {
-          if (!startTime) startTime = currentTime;
-          const progress = (currentTime - startTime) / duration;
-
-          if (progress < 1) {
-            setCount(Math.floor(target * progress));
-            requestAnimationFrame(animate);
-          } else {
-            setCount(target);
-          }
-        };
-        requestAnimationFrame(animate);
-      }
-    }, [isInView, target, duration]);
-
-    return (
-      <span ref={ref}>
-        {count}
-        {suffix}
-      </span>
-    );
-  };
-
   return (
     <section
       id="achievements"
       className="section-container relative overflow-hidden"
-      style={{ backgroundColor: "rgba(28, 20, 16, 0.3)" }}
+      style={{ backgroundColor: "var(--color-background)" }}
     >
       {/* Ambient Background Orbs */}
       <motion.div
@@ -144,7 +107,10 @@ export default function Achievements() {
           ease: "easeInOut",
         }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(245, 158, 11, 0.12)" }}
+        style={{
+          background:
+            "color-mix(in srgb, var(--color-primary), transparent 88%)",
+        }}
         aria-hidden="true"
       />
 
@@ -166,7 +132,8 @@ export default function Achievements() {
             <span
               className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full"
               style={{
-                backgroundColor: "rgba(245, 158, 11, 0.1)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--color-primary), transparent 90%)",
                 color: "var(--color-primary)",
                 border: "1px solid var(--color-border)",
               }}
@@ -202,7 +169,7 @@ export default function Achievements() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
         >
-          {achievements.map((achievement, idx) => (
+          {ACHIEVEMENTS.map((achievement, idx) => (
             <motion.div
               key={idx}
               variants={{
@@ -221,14 +188,17 @@ export default function Achievements() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 50%, rgba(251, 191, 36, 0.05) 100%)",
+                    "linear-gradient(135deg, color-mix(in srgb, var(--color-primary), transparent 95%) 0%, transparent 50%, color-mix(in srgb, var(--color-accent), transparent 95%) 100%)",
                 }}
               />
 
               {/* Top Corner Accent */}
               <div
                 className="absolute top-0 right-0 w-24 h-24 rounded-bl-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ backgroundColor: "rgba(245, 158, 11, 0.15)" }}
+                style={{
+                  backgroundColor:
+                    "color-mix(in srgb, var(--color-primary), transparent 85%)",
+                }}
               />
 
               <div className="relative z-10">
@@ -238,12 +208,13 @@ export default function Achievements() {
                   transition={{ duration: 0.6 }}
                   className="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center"
                   style={{
-                    backgroundColor: "rgba(245, 158, 11, 0.1)",
+                    backgroundColor:
+                      "color-mix(in srgb, var(--color-primary), transparent 90%)",
                     border: "1px solid var(--color-border)",
                     color: "var(--color-primary)",
                   }}
                 >
-                  {achievement.icon}
+                  <achievement.icon size={28} />
                 </motion.div>
 
                 {/* Metric with Animated Counter */}
@@ -339,12 +310,7 @@ export default function Achievements() {
             />
 
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {[
-                { value: "95%", label: "Code Quality" },
-                { value: "60%", label: "Faster Sync" },
-                { value: "Zero", label: "Missed Deadlines" },
-                { value: "100%", label: "Client Satisfaction" },
-              ].map((stat, idx) => (
+              {ADDITIONAL_STATS.map((stat, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -387,26 +353,10 @@ export default function Achievements() {
             href="#projects"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-4 font-medium rounded-lg transition-all duration-300"
-            style={{
-              backgroundColor: "var(--color-primary)",
-              color: "white",
-            }}
+            className="btn-primary inline-flex items-center gap-2 px-8 py-4 font-medium rounded-lg transition-all duration-300"
           >
             View Case Studies
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              strokeWidth="2"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
+            <FaArrowRight className="w-4 h-4" />
           </motion.a>
         </motion.div>
       </motion.div>

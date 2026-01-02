@@ -1,30 +1,55 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaMobileAlt,
+  FaServer,
+  FaCode,
+  FaArrowRight,
+} from "react-icons/fa";
+
+// --- Data Defined Outside ---
+const PROJECTS = [
+  {
+    id: 1,
+    title: "E-Commerce Mobile Application",
+    category: "Mobile Development",
+    icon: FaMobileAlt,
+    tech: ["Flutter", "Firebase", "Razorpay", "Hive"],
+    description:
+      "Cross-platform shopping app featuring secure payment integration, offline-first architecture with Hive caching, and a comprehensive product catalog serving 1000+ items.",
+    metrics: [
+      { label: "Users", value: "500+" },
+      { label: "Success Rate", value: "99.8%" },
+      { label: "Faster Boot", value: "45%" },
+    ],
+    links: {
+      github: "https://github.com/ShallowAwe",
+      live: null, // Add URL if available
+    },
+  },
+  {
+    id: 2,
+    title: "Full-Stack Expense Tracker",
+    category: "Backend System",
+    icon: FaServer,
+    tech: ["Spring Boot", "MongoDB", "OAuth2", "React"],
+    description:
+      "Comprehensive expense management system with OAuth2 authentication, real-time synchronization, and interactive analytics dashboard handling high-volume transaction records.",
+    metrics: [
+      { label: "Records", value: "10K+" },
+      { label: "Latency", value: "<1s" },
+      { label: "Sync", value: "Real-time" },
+    ],
+    links: {
+      github: "https://github.com/ShallowAwe",
+      live: "https://github.com/ShallowAwe", // Placeholder for demo
+    },
+  },
+];
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "E-Commerce Mobile Application",
-      tech: ["Flutter", "Firebase", "Razorpay"],
-      description:
-        "Cross-platform shopping app featuring secure payment integration, offline-first architecture with Hive caching, and a comprehensive product catalog serving 1000+ items. Achieved 99.8% transaction success rate and 45% faster startup time through optimized state management.",
-      metrics: { users: "500+", success: "99.8%", improvement: "45%" },
-      links: {
-        github: "https://github.com/ShallowAwe",
-      },
-    },
-    {
-      title: "Full-Stack Expense Tracker",
-      tech: ["Spring Boot", "MongoDB", "OAuth2"],
-      description:
-        "Comprehensive expense management system with OAuth2 authentication, real-time synchronization, and interactive analytics dashboard. Engineered to handle 10,000+ transaction records with sub-second query response times.",
-      metrics: { records: "10K+", response: "<1s", sync: "Real-time" },
-      links: {
-        github: "https://github.com/ShallowAwe",
-      },
-    },
-  ];
-
   return (
     <section
       id="projects"
@@ -43,7 +68,10 @@ export default function Projects() {
           ease: "easeInOut",
         }}
         className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(245, 158, 11, 0.15)" }}
+        style={{
+          background:
+            "color-mix(in srgb, var(--color-primary), transparent 85%)",
+        }}
         aria-hidden="true"
       />
       <motion.div
@@ -57,7 +85,10 @@ export default function Projects() {
           ease: "easeInOut",
         }}
         className="absolute bottom-1/4 left-1/3 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(251, 191, 36, 0.12)" }}
+        style={{
+          background:
+            "color-mix(in srgb, var(--color-accent), transparent 88%)",
+        }}
         aria-hidden="true"
       />
 
@@ -72,7 +103,8 @@ export default function Projects() {
           <span
             className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full"
             style={{
-              backgroundColor: "rgba(245, 158, 11, 0.1)",
+              backgroundColor:
+                "color-mix(in srgb, var(--color-primary), transparent 90%)",
               color: "var(--color-primary)",
               border: "1px solid var(--color-border)",
             }}
@@ -95,24 +127,25 @@ export default function Projects() {
           style={{ color: "var(--color-text-secondary)" }}
         >
           Production-ready applications demonstrating full-stack development
-          expertise.
+          expertise, from mobile interfaces to scalable backends.
         </motion.p>
       </div>
 
       {/* Projects Grid */}
       <div className="grid gap-8 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <motion.article
-            key={index}
+            key={project.id}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.2, duration: 0.7 }}
-            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-300 relative"
+            whileHover={{ y: -10 }}
+            className="group rounded-3xl overflow-hidden flex flex-col transition-all duration-300 relative"
             style={{
               backgroundColor: "var(--color-surface)",
               border: "1px solid var(--color-border)",
+              boxShadow: "0 4px 20px -2px var(--color-shadow)",
             }}
           >
             {/* Hover Gradient Overlay */}
@@ -120,7 +153,7 @@ export default function Projects() {
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, transparent 50%, rgba(251, 191, 36, 0.04) 100%)",
+                  "linear-gradient(135deg, color-mix(in srgb, var(--color-primary), transparent 96%) 0%, transparent 50%, color-mix(in srgb, var(--color-accent), transparent 96%) 100%)",
               }}
             />
 
@@ -136,99 +169,85 @@ export default function Projects() {
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow relative z-10">
               {/* Title Section */}
-              <div className="flex justify-between items-start mb-4">
-                <h3
-                  className="text-2xl font-bold group-hover:text-gradient transition-all duration-300 flex-1"
-                  style={{ color: "var(--color-text-primary)" }}
-                >
-                  {project.title}
-                </h3>
-
-                {/* Project Icon */}
-                <motion.div
-                  whileHover={{ rotate: 90, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                  className="ml-4"
-                  style={{ color: "var(--color-primary)" }}
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider"
+                      style={{ color: "var(--color-primary)" }}
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-2xl font-bold group-hover:text-gradient transition-all duration-300"
+                    style={{ color: "var(--color-text-primary)" }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </motion.div>
+                    {project.title}
+                  </h3>
+                </div>
+
+                {/* Project Icon Background */}
+                <div
+                  className="p-3 rounded-xl transform transition-transform duration-500 group-hover:rotate-12"
+                  style={{
+                    backgroundColor:
+                      "color-mix(in srgb, var(--color-primary), transparent 90%)",
+                    color: "var(--color-primary)",
+                  }}
+                >
+                  <project.icon size={24} />
+                </div>
               </div>
 
               {/* Tech Stack Badges */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, i) => (
-                  <motion.span
+                  <span
                     key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="text-xs font-medium px-3 py-1 rounded-full transition-all duration-300"
+                    className="text-xs font-medium px-3 py-1 rounded-full transition-all duration-300 border"
                     style={{
-                      backgroundColor: "rgba(245, 158, 11, 0.1)",
-                      color: "var(--color-primary)",
-                      border: "1px solid var(--color-border)",
+                      backgroundColor: "var(--color-surface)",
+                      borderColor: "var(--color-border)",
+                      color: "var(--color-text-secondary)",
                     }}
                   >
                     {tech}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
 
               {/* Description */}
               <p
-                className="leading-relaxed mb-8 flex-grow"
+                className="leading-relaxed mb-8 flex-grow text-sm md:text-base"
                 style={{ color: "var(--color-text-secondary)" }}
               >
                 {project.description}
               </p>
 
-              {/* Metrics Section */}
+              {/* Metrics Grid */}
               <div
-                className="grid grid-cols-3 gap-4 mb-8 pt-6"
-                style={{
-                  borderTop: "1px solid var(--color-border)",
-                }}
+                className="grid grid-cols-3 gap-4 mb-8 pt-6 relative"
+                style={{ borderTop: "1px solid var(--color-border)" }}
               >
-                {Object.entries(project.metrics).map(([key, value], i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    className="text-center group/metric"
-                  >
+                {project.metrics.map((metric, i) => (
+                  <div key={i} className="text-center group/metric">
                     <div
-                      className="text-xl md:text-2xl font-bold mb-1 group-hover/metric:text-gradient transition-all duration-300"
+                      className="text-lg md:text-xl font-bold mb-1 group-hover/metric:text-gradient transition-all duration-300"
                       style={{ color: "var(--color-text-primary)" }}
                     >
-                      {value}
+                      {metric.value}
                     </div>
                     <div
-                      className="text-xs uppercase tracking-wider"
+                      className="text-[10px] md:text-xs uppercase tracking-wider font-medium"
                       style={{
                         color: "var(--color-text-secondary)",
-                        opacity: 0.7,
+                        opacity: 0.8,
                       }}
                     >
-                      {key}
+                      {metric.label}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
@@ -240,25 +259,15 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backgroundColor: "var(--color-surface-accent)",
                     color: "var(--color-text-primary)",
                     border: "1px solid var(--color-border)",
                   }}
                 >
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  View Code
+                  <FaGithub size={16} />
+                  <span>Code</span>
                 </motion.a>
 
                 {project.links.live && (
@@ -268,36 +277,19 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
                     style={{
                       backgroundColor: "var(--color-primary)",
                       color: "white",
+                      boxShadow: "0 4px 15px -3px var(--color-shadow)",
                     }}
                   >
-                    Live Demo
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    <span>Live Demo</span>
+                    <FaExternalLinkAlt size={12} />
                   </motion.a>
                 )}
               </div>
             </div>
-
-            {/* Bottom Corner Glow */}
-            <div
-              className="absolute bottom-0 right-0 w-32 h-32 rounded-tl-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-              style={{ backgroundColor: "rgba(251, 191, 36, 0.1)" }}
-            />
           </motion.article>
         ))}
       </div>
@@ -310,8 +302,11 @@ export default function Projects() {
         transition={{ delay: 0.6, duration: 0.6 }}
         className="mt-16 text-center"
       >
-        <p className="mb-4" style={{ color: "var(--color-text-secondary)" }}>
-          Want to see more of my work?
+        <p
+          className="mb-4 text-sm"
+          style={{ color: "var(--color-text-secondary)" }}
+        >
+          Curious about the code?
         </p>
         <a
           href="https://github.com/ShallowAwe"
@@ -319,31 +314,14 @@ export default function Projects() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-300 hover:scale-105"
           style={{
-            backgroundColor: "var(--color-primary)",
-            color: "white",
+            backgroundColor: "var(--color-surface-glass)",
+            color: "var(--color-primary)",
+            border: "1px solid var(--color-primary)",
           }}
         >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              fillRule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              clipRule="evenodd"
-            />
-          </svg>
-          Visit My GitHub
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            strokeWidth="2"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13 7l5 5m0 0l-5 5m5-5H6"
-            />
-          </svg>
+          <FaCode size={16} />
+          <span>View More on GitHub</span>
+          <FaArrowRight size={12} />
         </a>
       </motion.div>
     </section>

@@ -1,131 +1,58 @@
 import React, { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+// Importing icons makes the code much cleaner
+import {
+  FaCode,
+  FaMobileAlt,
+  FaRocket,
+  FaBriefcase,
+  FaCheckCircle,
+  FaLayerGroup,
+} from "react-icons/fa";
+import profileImage from "../../assets/profile.png";
+
+// Optimization: Static data defined outside
+const STATS = [
+  {
+    label: "Years Experience",
+    value: "1+",
+    icon: FaBriefcase,
+  },
+  {
+    label: "Projects Completed",
+    value: "10+",
+    icon: FaCheckCircle,
+  },
+  {
+    label: "Technologies",
+    value: "15+",
+    icon: FaLayerGroup,
+  },
+];
+
+const HIGHLIGHTS = [
+  {
+    icon: FaRocket,
+    title: "Performance First",
+    description:
+      "Building lightning-fast applications with optimized code and best practices.",
+  },
+  {
+    icon: FaMobileAlt,
+    title: "Mobile Expertise",
+    description:
+      "Specializing in cross-platform Flutter apps with native performance.",
+  },
+  {
+    icon: FaCode,
+    title: "Clean Design",
+    description:
+      "Creating intuitive user interfaces that users love to interact with.",
+  },
+];
 
 export default function About() {
   const [hoveredStat, setHoveredStat] = useState(null);
-
-  const stats = [
-    {
-      label: "Years Experience",
-      value: "2+",
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-          />
-        </svg>
-      ),
-    },
-    {
-      label: "Projects Completed",
-      value: "10+",
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-      ),
-    },
-    {
-      label: "Technologies",
-      value: "15+",
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          />
-        </svg>
-      ),
-    },
-  ];
-
-  const highlights = [
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      ),
-      title: "Performance First",
-      description:
-        "Building lightning-fast applications with optimized code and best practices",
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-      title: "Mobile Expertise",
-      description:
-        "Specializing in cross-platform Flutter apps with native performance",
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeWidth="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-          />
-        </svg>
-      ),
-      title: "Clean Design",
-      description:
-        "Creating intuitive user interfaces that users love to interact with",
-    },
-  ];
 
   return (
     <section
@@ -133,7 +60,7 @@ export default function About() {
       className="section-container relative overflow-hidden"
       style={{ backgroundColor: "var(--color-background)" }}
     >
-      {/* Ambient Background Orbs */}
+      {/* Ambient Background Orbs (Dynamic Color) */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -145,7 +72,10 @@ export default function About() {
           ease: "easeInOut",
         }}
         className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(245, 158, 11, 0.15)" }}
+        style={{
+          background:
+            "color-mix(in srgb, var(--color-primary), transparent 85%)",
+        }}
         aria-hidden="true"
       />
       <motion.div
@@ -159,7 +89,10 @@ export default function About() {
           ease: "easeInOut",
         }}
         className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none"
-        style={{ backgroundColor: "rgba(251, 191, 36, 0.12)" }}
+        style={{
+          background:
+            "color-mix(in srgb, var(--color-accent), transparent 88%)",
+        }}
         aria-hidden="true"
       />
 
@@ -214,45 +147,28 @@ export default function About() {
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
             style={{
               background:
-                "linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, transparent 50%, rgba(251, 191, 36, 0.04) 100%)",
+                "linear-gradient(135deg, color-mix(in srgb, var(--color-primary), transparent 96%) 0%, transparent 50%, color-mix(in srgb, var(--color-accent), transparent 96%) 100%)",
             }}
           />
 
-          {/* Decorative Corner Element */}
-          <div
-            className="absolute top-0 right-0 w-40 h-40 rounded-bl-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-            style={{ backgroundColor: "rgba(245, 158, 11, 0.3)" }}
-          />
-
           <div className="relative z-10">
-            {/* Profile Image Placeholder - You can add your photo here */}
+            {/* Profile Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-8 rounded-2xl overflow-hidden relative"
+              className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden relative shadow-xl"
               style={{
-                backgroundColor: "rgba(245, 158, 11, 0.1)",
-                border: "2px solid var(--color-border)",
+                border: "4px solid var(--color-surface)",
+                boxShadow: "0 0 20px var(--color-shadow)",
               }}
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg
-                  className="w-12 h-12 md:w-16 md:h-16"
-                  fill="none"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  style={{ color: "var(--color-primary)" }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-              </div>
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
 
             {/* About Text */}
@@ -261,10 +177,10 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-6 mb-8"
+              className="space-y-6 mb-12 text-center max-w-3xl mx-auto"
             >
               <p
-                className="text-lg leading-relaxed text-center md:text-left"
+                className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
                 I'm a passionate{" "}
@@ -278,7 +194,7 @@ export default function About() {
                 creating elegant solutions to complex problems.
               </p>
               <p
-                className="text-lg leading-relaxed text-center md:text-left"
+                className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
                 I specialize in{" "}
@@ -294,8 +210,7 @@ export default function About() {
                   Spring Boot
                 </span>
                 , and modern web technologies, with a strong focus on
-                performance optimization and user experience. I'm always eager
-                to learn new technologies and tackle challenging projects.
+                performance optimization and user experience.
               </p>
             </motion.div>
 
@@ -307,7 +222,7 @@ export default function About() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="grid md:grid-cols-3 gap-6"
             >
-              {highlights.map((highlight, idx) => (
+              {HIGHLIGHTS.map((highlight, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -315,31 +230,35 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.6 + idx * 0.1 }}
                   whileHover={{ y: -4, scale: 1.02 }}
-                  className="group/highlight p-4 rounded-xl transition-all duration-300"
+                  className="group/highlight p-6 rounded-xl transition-all duration-300 text-center md:text-left"
                   style={{
-                    backgroundColor: "rgba(28, 20, 16, 0.5)",
+                    backgroundColor: "var(--color-surface-glass)",
                     border: "1px solid var(--color-border)",
                   }}
                 >
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="mb-3"
-                    style={{ color: "var(--color-primary)" }}
+                    className="mb-4 inline-block p-3 rounded-lg"
+                    style={{
+                      backgroundColor:
+                        "color-mix(in srgb, var(--color-primary), transparent 90%)",
+                      color: "var(--color-primary)",
+                    }}
                   >
-                    {highlight.icon}
+                    <highlight.icon size={24} />
                   </motion.div>
                   <h4
-                    className="font-semibold mb-2 text-sm"
+                    className="font-bold mb-2 text-lg"
                     style={{ color: "var(--color-text-primary)" }}
                   >
                     {highlight.title}
                   </h4>
                   <p
-                    className="text-xs leading-relaxed"
+                    className="text-sm leading-relaxed"
                     style={{
                       color: "var(--color-text-secondary)",
-                      opacity: 0.8,
+                      opacity: 0.9,
                     }}
                   >
                     {highlight.description}
@@ -364,7 +283,7 @@ export default function About() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {stats.map((stat, index) => (
+          {STATS.map((stat, index) => (
             <motion.div
               key={index}
               variants={{
@@ -385,7 +304,7 @@ export default function About() {
                 className="absolute inset-0 opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 50%, rgba(251, 191, 36, 0.05) 100%)",
+                    "linear-gradient(135deg, color-mix(in srgb, var(--color-primary), transparent 95%) 0%, transparent 50%, color-mix(in srgb, var(--color-accent), transparent 95%) 100%)",
                 }}
               />
 
@@ -398,12 +317,13 @@ export default function About() {
                 transition={{ duration: 0.6 }}
                 className="mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-xl"
                 style={{
-                  backgroundColor: "rgba(245, 158, 11, 0.1)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--color-primary), transparent 90%)",
                   border: "1px solid var(--color-border)",
                   color: "var(--color-primary)",
                 }}
               >
-                {stat.icon}
+                <stat.icon size={28} />
               </motion.div>
 
               {/* Value */}
@@ -416,17 +336,6 @@ export default function About() {
               >
                 <div className="text-5xl font-bold text-gradient mb-3 relative">
                   {stat.value}
-                  <motion.span
-                    className="absolute -inset-4 rounded-lg opacity-0 blur-xl"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, var(--color-primary), var(--color-accent))",
-                    }}
-                    animate={{
-                      opacity: hoveredStat === index ? 0.2 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </div>
                 <div
                   className="text-sm font-medium uppercase tracking-wider"
@@ -472,52 +381,19 @@ export default function About() {
               href="#projects"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 font-medium rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
-              style={{
-                backgroundColor: "var(--color-primary)",
-                color: "white",
-              }}
+              className="btn-primary flex items-center justify-center gap-2"
             >
               View Projects
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                strokeWidth="2"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
+              <FaRocket />
             </motion.a>
             <motion.a
               href="#skills"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 font-medium rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-                color: "var(--color-text-primary)",
-                border: "1px solid var(--color-border)",
-              }}
+              className="btn-secondary flex items-center justify-center gap-2"
             >
               Explore Skills
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                strokeWidth="2"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+              <FaCode />
             </motion.a>
           </div>
         </motion.div>

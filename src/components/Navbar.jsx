@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
+// FIX: Import the image so the bundler handles it correctly
 import profileImage from "../assets/profile.png";
+
+// Optimization: Define static data outside the component
+const NAV_ITEMS = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
+  { name: "Achievements", href: "#achievements" },
+  { name: "Contact", href: "#contact" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme, isDark } = useTheme();
 
+  // Optimization: Throttling scroll events is usually better,
+  // but for a simple boolean toggle, this native approach is fine.
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -14,42 +30,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape" && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [mobileMenuOpen]);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [mobileMenuOpen]);
-
-  const handleNavClick = () => {
-    setMobileMenuOpen(false);
+  const themeIconVariants = {
+    initial: { scale: 0.5, opacity: 0, rotate: -180 },
+    animate: { scale: 1, opacity: 1, rotate: 0 },
+    exit: { scale: 0.5, opacity: 0, rotate: 180 },
   };
-
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Education", href: "#education" },
-    { name: "Achievements", href: "#achievements" },
-    { name: "Contact", href: "#contact" },
-  ];
 
   return (
     <motion.nav
@@ -57,186 +42,170 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-panel shadow-lg" : "bg-transparent"
+        scrolled
+          ? "glass-panel shadow-lg border-b border-[var(--color-border)] py-3"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo with Profile Image */}
+          {/* Logo */}
           <a href="#hero" className="flex items-center gap-3 group">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              whileHover={{ scale: 1.1 }}
-              className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary shadow-lg shadow-primary/20 transition-colors"
-            >
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--color-primary)] group-hover:shadow-[0_0_15px_var(--color-primary)] transition-all duration-300">
               <img
                 src={profileImage}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
-            </motion.div>
-            <span className="text-2xl font-bold text-gradient hover:opacity-80 transition-opacity">
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent">
               RI
             </span>
           </a>
 
-          {/* Nav Links */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-textSecondary hover:text-primary transition-colors duration-200 text-sm font-medium"
+                className="relative text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors font-medium text-sm group"
               >
                 {item.name}
+                {/* Hover Underline Effect */}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <a
-            href="#contact"
-            className="hidden md:block px-5 py-2 bg-primary hover:bg-primaryHover text-white rounded-lg transition-all duration-300 text-sm font-medium active:scale-95"
-          >
-            Get in Touch
-          </a>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-textPrimary transition-colors hover:text-primary"
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Actions */}
+          <div className="flex items-center gap-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="relative w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-[var(--color-surface-hover)] border border-transparent hover:border-[var(--color-border)]"
+              aria-label="Toggle Theme"
             >
-              {mobileMenuOpen ? (
+              <AnimatePresence mode="wait">
+                {isDark ? (
+                  <motion.div
+                    key="sunset"
+                    variants={themeIconVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.3 }}
+                    className="text-orange-500"
+                  >
+                    {/* Moon/Sunset Icon */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="sun"
+                    variants={themeIconVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.3 }}
+                    className="text-amber-500"
+                  >
+                    {/* Sun Icon */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v2" />
+                      <path d="M12 20v2" />
+                      <path d="m4.93 4.93 1.41 1.41" />
+                      <path d="m17.66 17.66 1.41 1.41" />
+                      <path d="M2 12h2" />
+                      <path d="M20 12h2" />
+                      <path d="m6.34 17.66-1.41 1.41" />
+                      <path d="m19.07 4.93-1.41 1.41" />
+                    </svg>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)] rounded-lg transition-colors"
+              aria-label="Toggle Menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+                  d={
+                    mobileMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
                 />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <>
-          {/* Backdrop */}
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-            aria-hidden="true"
-          />
-
-          {/* Menu Drawer */}
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 w-[280px] z-50 md:hidden overflow-y-auto"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden border-b border-[var(--color-border)]"
             style={{
-              backgroundColor: "var(--color-surface)",
-              borderLeft: "1px solid var(--color-border)",
+              backgroundColor: "var(--color-background)",
+              // Ensures glass effect works on mobile menu too if needed
+              backdropFilter: "blur(12px)",
             }}
           >
-            {/* Menu Header */}
-            <div
-              className="flex items-center justify-between p-6 border-b"
-              style={{ borderColor: "var(--color-border)" }}
-            >
-              <span className="text-xl font-bold text-gradient">Menu</span>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-lg transition-colors"
-                style={{
-                  color: "var(--color-text-secondary)",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                }}
-                aria-label="Close menu"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Menu Items */}
-            <nav className="p-6 space-y-2">
-              {navItems.map((item, index) => (
-                <motion.a
+            <div className="flex flex-col p-4 space-y-2">
+              {NAV_ITEMS.map((item) => (
+                <a
                   key={item.name}
                   href={item.href}
-                  onClick={handleNavClick}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
-                  style={{
-                    color: "var(--color-text-secondary)",
-                    backgroundColor: "transparent",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = "rgba(245, 158, 11, 0.1)";
-                    e.target.style.color = "var(--color-primary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = "transparent";
-                    e.target.style.color = "var(--color-text-secondary)";
-                  }}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-[var(--color-text-primary)] font-medium hover:bg-[var(--color-surface-hover)] hover:pl-6 rounded-lg transition-all duration-300"
                 >
                   {item.name}
-                </motion.a>
+                </a>
               ))}
-            </nav>
-
-            {/* CTA Button in Mobile Menu */}
-            <div className="p-6 pt-0">
-              <a
-                href="#contact"
-                onClick={handleNavClick}
-                className="block w-full text-center px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg transition-all duration-300 text-sm font-medium active:scale-95"
-              >
-                Get in Touch
-              </a>
             </div>
           </motion.div>
-        </>
-      )}
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

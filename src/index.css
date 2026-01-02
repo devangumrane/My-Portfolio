@@ -1,25 +1,49 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------------------- */
-/*  Modern Minimal Theme — Design Tokens                                      */
+/* Modern Minimal Theme — Design Tokens                                      */
 /* -------------------------------------------------------------------------- */
 :root {
-  --color-primary: #f59e0b;        /* Amber */
-  --color-primary-hover: #d97706;
-  --color-accent: #fbbf24;         /* Yellow */
-  --color-background: #0f0a05;     /* Very dark brown */
-  --color-surface: #1c1410;
-  --color-text-primary: #fffbeb;   /* Warm white */
-  --color-text-secondary: #a8a29e;
-  --color-border: rgba(245, 158, 11, 0.15);
+  /* Light Mode (Warmer/Amber-ish) */
+  --color-primary: #f59e0b;          /* Amber 500 */
+  --color-primary-hover: #d97706;    /* Amber 600 */
+  --color-accent: #fbbf24;           /* Amber 400 */
+  --color-background: #fffbeb;       /* Amber 50 - Warmer background */
+  --color-surface: #ffffff;          /* White */
+  --color-surface-hover: #fff7ed;    /* Orange 50 */
+  --color-surface-glass: rgba(255, 251, 235, 0.7); /* Warm translucent */
+  --color-surface-glass-hover: rgba(255, 251, 235, 0.9);
+  --color-surface-accent: rgba(245, 158, 11, 0.1);
+  --color-text-primary: #451a03;     /* Amber 950 - softer than black */
+  --color-text-secondary: #78350f;   /* Amber 900 */
+  --color-border: rgba(148, 96, 7, 0.25);
+  --color-shadow: rgba(245, 159, 11, 0.15); /* Warm shadow */
 }
+
+.dark {
+  /* Dark Mode */
+  --color-primary: #f59e0b;          /* Amber 500 */
+  --color-primary-hover: #d97706;    /* Amber 600 */
+  --color-accent: #fbbf24;           /* Amber 400 */
+  --color-background: #0f0a05;       /* Very dark warm black */
+  --color-surface: #1c1410;          /* Dark warm surface */
+  --color-surface-hover: #2a1b15;
+  --color-surface-glass: rgba(28, 20, 16, 0.5);
+  --color-surface-glass-hover: rgba(28, 20, 16, 0.8);
+  --color-surface-accent: rgba(255, 255, 255, 0.05);
+  --color-text-primary: #fffbeb;     /* Amber 50 */
+  --color-text-secondary: #d6d3d1;   /* Stone 300 */
+  --color-border: rgba(245, 158, 11, 0.15);
+  --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-slate-900 text-slate-50 font-sans antialiased;
+    @apply font-sans antialiased transition-colors duration-300;
     background-color: var(--color-background);
     color: var(--color-text-primary);
     overflow-x: hidden;
@@ -34,10 +58,11 @@
 @layer components {
   /* Glassmorphism Utility */
   .glass-panel {
-    background-color: rgba(30, 41, 59, 0.5);
+    background-color: var(--color-background); /* Fallback */
+    background-color: color-mix(in srgb, var(--color-background) 80%, transparent);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px -2px var(--color-shadow);
   }
 
   .btn-primary {
@@ -48,18 +73,19 @@
 
   .btn-primary:hover {
     background-color: var(--color-primary-hover);
-    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25);
+    /* FIXED: Uses your theme shadow instead of hardcoded blue */
+    box-shadow: 0 10px 15px -3px var(--color-shadow);
   }
 
   .btn-secondary {
     @apply px-6 py-3 font-medium rounded-lg transition-all duration-300 active:scale-95;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--color-surface-glass);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
   }
 
   .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-surface-glass-hover);
   }
 
   .section-container {

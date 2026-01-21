@@ -14,15 +14,15 @@ const PROJECTS = [
   {
     id: 1,
     title: "QMS Application",
-    category: "Full-Stack Development",
+    category: "Enterprise Backend Architecture",
     icon: FaServer,
     tech: ["Node.js", "Express", "MongoDB"],
     description:
-      "A Quality Management System to manage audits, processes, and compliance workflows. Designed REST APIs for process management, audits, and role-based access.",
+      "A comprehensive Quality Management System focused on modular API design and data integrity. Engineered complex MongoDB aggregation pipelines for audit reporting and implemented hierarchical RBAC for multi-org security compliance.",
     metrics: [
-      { label: "Year", value: "2025" },
-      { label: "Status", value: "Upcoming" },
-      { label: "Arch", value: "Microservices" },
+      { label: "Security", value: "JWT/RBAC" },
+      { label: "Data", value: "Aggregation" },
+      { label: "Arch", value: "Modular" },
     ],
     links: {
       github: "https://github.com/devangumrane",
@@ -32,15 +32,15 @@ const PROJECTS = [
   {
     id: 2,
     title: "LetsInsurance Platform",
-    category: "Web Application",
+    category: "High-Throughput Services",
     icon: FaCode,
-    tech: ["React.js", "Figma", "Node.js"],
+    tech: ["React.js", "Node.js", "Express"],
     description:
-      "A third-party insurance platform for browsing, comparing, and managing insurance plans. Developed backend services for insurance flows and modular backend structure for scalability.",
+      "An insurance comparison engine built for scalability. Developed decoupled backend services to manage insurance flows, integrating complex business logic with modular handlers for seamless service bridging.",
     metrics: [
-      { label: "Year", value: "2025" },
-      { label: "Status", value: "Development" },
-      { label: "Design", value: "Figma" },
+      { label: "Throughput", value: "High" },
+      { label: "Logic", value: "Decoupled" },
+      { label: "Stack", value: "MERN" },
     ],
     links: {
       github: "https://github.com/devangumrane",
@@ -50,15 +50,15 @@ const PROJECTS = [
   {
     id: 3,
     title: "PCMC Divyang System",
-    category: "Government Project",
+    category: "Government API Infrastructure",
     icon: FaServer,
     tech: ["Node.js", "Express.js"],
     description:
-      "A government-focused system to manage workflows and data for Divyang (Persons with Disabilities) services under PCMC. Contributed to API development for workflow handling and data management.",
+      "A security-first backend system managing citizen welfare workflows. Designed and implemented RESTful endpoints focusing on data consistency, validation rules, and reliable transaction handling under PCMC.",
     metrics: [
-      { label: "Year", value: "2024" },
-      { label: "Impact", value: "Public" },
-      { label: "Role", value: "Backend" },
+      { label: "Auth", value: "Stateless" },
+      { label: "Reliability", value: "ACID" },
+      { label: "Scale", value: "Public" },
     ],
     links: {
       github: null,

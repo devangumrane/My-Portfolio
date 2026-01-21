@@ -33,21 +33,21 @@ const STATS = [
 const HIGHLIGHTS = [
   {
     icon: FaRocket,
-    title: "Backend Scalability",
+    title: "Architecting Systems",
     description:
-      "Expertise in designing and building scalable RESTful APIs using Node.js and Express.",
-  },
-  {
-    icon: FaMobileAlt,
-    title: "Full-Stack MERN",
-    description:
-      "Proficient in MongoDB, Express, React, and Node.js for comprehensive web solutions.",
+      "Designing modular, maintenance-first backend architectures using Node.js and Express.",
   },
   {
     icon: FaCode,
-    title: "Database Design",
+    title: "Database Ownership",
     description:
-      "Strong command over MongoDB schema optimization and indexing for performance.",
+      "Implementing optimized MongoDB schemas with a focus on data integrity and query performance.",
+  },
+  {
+    icon: FaLayerGroup,
+    title: "Security & Lifecycle",
+    description:
+      "Owning the complete API lifecycle, from secure JWT authentication to production deployment.",
   },
 ];
 
@@ -119,13 +119,13 @@ export default function About() {
                 border: "1px solid var(--color-border)",
               }}
             >
-              Getting to Know Me
+              The Backend Perspective
             </span>
             <h2
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
               style={{ color: "var(--color-text-primary)" }}
             >
-              About <span className="text-gradient">Me</span>
+              Technical <span className="text-gradient">Core</span>
             </h2>
           </motion.div>
         </div>
@@ -184,38 +184,25 @@ export default function About() {
                 className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
-                I'm a passionate{" "}
+                I am a{" "}
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
-                  Backend-focused MERN Developer
+                  Backend Engineer
                 </span>{" "}
-                with hands-on experience designing and building scalable RESTful APIs.
-                Seeking backend or MERN-focused roles where I can take ownership of APIs and backend systems.
+                dedicated to building robust, production-grade systems. My expertise lies in architecting the core logic and data structures that power modern applications, with a specialized focus on the MERN stack.
               </p>
               <p
                 className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
-                I specialize in{" "}
+                I take full responsibility for the{" "}
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
-                  Node.js
+                  Backend Lifecycle
                 </span>
-                ,{" "}
-                <span
-                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
-                >
-                  Express
-                </span>
-                , and{" "}
-                <span
-                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
-                >
-                  MongoDB
-                </span>
-                , with a strong focus on authentication, data modeling, and performance optimization.
+                —from initial schema design and API documentation to implementing secure JWT authentication protocols and performance-tuning Node.js services.
               </p>
             </motion.div>
 

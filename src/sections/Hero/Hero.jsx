@@ -141,11 +141,10 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
               </span>
               <span style={{ color: "var(--color-text-secondary)" }}>
-                Available for Freelance & Full-time
+                Open for Full-time Roles
               </span>
             </div>
           </motion.div>
-
           {/* Headline */}
           <div>
             <motion.h1
@@ -158,15 +157,15 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
-                Building digital
+                Engineering
               </motion.span>
               <motion.span
-                className="text-gradient block pb-2" // pb-2 fixes gradient clipping
+                className="text-gradient block pb-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                experiences
+                Scalable Backends.
               </motion.span>
               <motion.span
                 className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
@@ -174,7 +173,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                that matter.
+                High-Performance APIs.
               </motion.span>
             </motion.h1>
           </div>
@@ -195,8 +194,7 @@ export default function Hero() {
               Devang Umrane
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
             </span>
-            . A Backend-focused MERN Developer creating scalable, human-centered
-            applications with modern technologies.
+            . A Backend Engineer specializing in Node.js, Express, and MongoDB. I focus on system reliability, data integrity, and API scalability.
           </motion.p>
 
           {/* CTA Buttons */}

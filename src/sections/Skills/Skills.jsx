@@ -33,61 +33,80 @@ import { MdDevices, MdSync } from "react-icons/md";
 // --- Data Defined Outside ---
 const SKILL_CATEGORIES = [
   {
-    id: "lang",
-    title: "Programming Languages",
-    icon: FaCode,
-    description: "Core languages I use for development",
-    items: [
-      { name: "JavaScript (ES6+)", icon: <SiJavascript />, level: 90 },
-      { name: "HTML5", icon: <FaCode />, level: 95 },
-      { name: "CSS3", icon: <FaCode />, level: 90 },
-    ],
-  },
-  {
     id: "backend",
-    title: "Backend Development",
+    title: "Backend Core",
     icon: FaServer,
-    description: "Server-side expertise",
+    description: "Architecting scalable server-side systems",
     items: [
-      { name: "Node.js", icon: <FaServer />, level: 85 },
-      { name: "Express.js", icon: <FaServer />, level: 82 },
-      { name: "REST API Development", icon: <TbApi />, level: 88 },
-    ],
-  },
-  {
-    id: "frontend",
-    title: "Frontend Development",
-    icon: FaMobileAlt,
-    description: "User interface technologies",
-    items: [
-      { name: "React.js", icon: <FaCode />, level: 80 },
+      { name: "Node.js", icon: <FaServer />, level: 90 },
+      { name: "Express.js", icon: <FaServer />, level: 88 },
+      { name: "REST API Design", icon: <TbApi />, level: 92 },
+      { name: "JWT & RBAC", icon: <SiAuth0 />, level: 85 },
     ],
   },
   {
     id: "database",
-    title: "Databases & Tools",
+    title: "Data & Infrastructure",
     icon: FaDatabase,
-    description: "Storage and workflow tools",
+    description: "Database modeling and dev tools",
     items: [
-      { name: "MongoDB", icon: <SiMongodb />, level: 85 },
+      { name: "MongoDB", icon: <SiMongodb />, level: 88 },
       { name: "PostgreSQL", icon: <FaDatabase />, level: 75 },
-      { name: "Git & GitHub", icon: <FaGitAlt />, level: 90 },
-      { name: "Postman", icon: <SiPostman />, level: 85 },
-      { name: "VS Code", icon: <FaCode />, level: 95 },
-      { name: "Figma", icon: <FaCode />, level: 70 },
+      { name: "Git & Version Control", icon: <FaGitAlt />, level: 90 },
+      { name: "Postman API Ops", icon: <SiPostman />, level: 85 },
+    ],
+  },
+  {
+    id: "lang",
+    title: "Core Languages",
+    icon: FaCode,
+    description: "Technical foundations",
+    items: [
+      { name: "JavaScript (ES6+)", icon: <SiJavascript />, level: 92 },
+      { name: "Technical Logic", icon: <FaCode />, level: 85 },
+    ],
+  },
+  {
+    id: "frontend",
+    title: "Tools & Frontend",
+    icon: FaMobileAlt,
+    description: "Supporting technologies",
+    items: [
+      { name: "React.js", icon: <FaCode />, level: 80 },
+      { name: "Figma (UI/UX)", icon: <FaCode />, level: 70 },
     ],
   },
   {
     id: "soft",
-    title: "Soft Skills",
+    title: "Engineering Mindset",
     icon: FaLayerGroup,
     description: "Professional attributes",
     items: [
+      { name: "System Ownership", icon: <FaCode />, level: 95 },
       { name: "Problem Solving", icon: <FaCode />, level: 95 },
-      { name: "Ownership", icon: <FaCode />, level: 90 },
-      { name: "Adaptability", icon: <FaCode />, level: 85 },
-      { name: "Continuous Learning", icon: <FaCode />, level: 95 },
+      { name: "Technical Documentation", icon: <FaCode />, level: 85 },
     ],
+  },
+];
+
+const PHILOSOPHY_ITEMS = [
+  {
+    title: "API Reliability",
+    description:
+      "Building robust error-handling layers and comprehensive logging for fail-safe production environments.",
+    icon: MdSync,
+  },
+  {
+    title: "Data Integrity",
+    description:
+      "Prioritizing schema normalization and efficient indexing to ensure data consistency and system performance.",
+    icon: FaCubes,
+  },
+  {
+    title: "Security-First",
+    description:
+      "Implementing stateless authentication and Role-Based Access Control (RBAC) as the foundation of system design.",
+    icon: FaLayerGroup,
   },
 ];
 
@@ -365,6 +384,68 @@ export default function Skills() {
             </motion.div>
           );
         })}
+      </motion.div>
+      {/* Technical Philosophy Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="mt-24 max-w-7xl mx-auto"
+      >
+        <div
+          className="p-8 md:p-12 rounded-[2.5rem] border overflow-hidden relative"
+          style={{
+            backgroundColor: "var(--color-surface)",
+            borderColor: "var(--color-border)",
+          }}
+        >
+          {/* Accent Glow */}
+          <div
+            className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-20 pointer-events-none"
+            style={{ backgroundColor: "var(--color-primary)" }}
+          />
+
+          <div className="relative z-10">
+            <h3
+              className="text-2xl md:text-3xl font-bold mb-8 text-center md:text-left"
+              style={{ color: "var(--color-text-primary)" }}
+            >
+              Technical <span className="text-gradient">Philosophy</span>
+            </h3>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {PHILOSOPHY_ITEMS.map((item, i) => (
+                <div key={i} className="flex flex-col gap-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shadow-inner"
+                    style={{
+                      backgroundColor:
+                        "color-mix(in srgb, var(--color-primary), transparent 90%)",
+                      color: "var(--color-primary)",
+                    }}
+                  >
+                    <item.icon size={24} />
+                  </div>
+                  <div>
+                    <h4
+                      className="text-lg font-bold mb-2"
+                      style={{ color: "var(--color-text-primary)" }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </motion.div>
     </section>
   );

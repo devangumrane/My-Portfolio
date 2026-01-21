@@ -18,10 +18,10 @@ const EXPERIENCES = [
     period: "Jan 2024 – Present",
     isCurrent: true,
     achievements: [
-      "API Development: Developing RESTful APIs using Node.js and Express for internal applications.",
-      "Database Design: Designed and optimized MongoDB schemas with indexing for performance.",
-      "Authentication: Implemented JWT-based authentication and role-based access control.",
-      "Collaboration: Worked with Git/GitHub in agile sprints with code reviews and issue tracking.",
+      "Designed and ownership of high-performance RESTful APIs using Node.js and Express for internal infrastructure.",
+      "Optimized MongoDB schemas and implemented strategic indexing, reducing query latency by optimizing data access patterns.",
+      "Secured enterprise endpoints by implementing JWT-based authentication and Role-Based Access Control (RBAC).",
+      "Managed backend version control and technical documentation within an Agile environment using Git/GitHub.",
     ],
     techStack: ["Node.js", "Express", "MongoDB", "JWT", "Git"],
   },
@@ -85,10 +85,10 @@ export default function Experience() {
         {EXPERIENCES.map((exp, index) => (
           <motion.div
             key={exp.id}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
             whileHover={{ y: -4 }}
             className="group relative p-8 rounded-2xl transition-all duration-300 overflow-hidden"
             style={{

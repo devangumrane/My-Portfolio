@@ -14,15 +14,15 @@ const PROJECTS = [
   {
     id: 1,
     title: "QMS Application",
-    category: "Backend Architecture",
+    category: "Full-Stack Development",
     icon: FaServer,
     tech: ["Node.js", "Express", "MongoDB"],
     description:
-      "Architected a scalable Quality Management System for audit and compliance. Engineered optimized MongoDB schemas and secure RESTful endpoints with Role-Based Access Control (RBAC) to handle complex enterprise data flows.",
+      "A Quality Management System to manage audits, processes, and compliance workflows. Designed REST APIs for process management, audits, and role-based access.",
     metrics: [
-      { label: "Role", value: "Lead Backend" },
-      { label: "Auth", value: "JWT/RBAC" },
-      { label: "Data", value: "MongoDB" },
+      { label: "Year", value: "2025" },
+      { label: "Status", value: "Upcoming" },
+      { label: "Arch", value: "Microservices" },
     ],
     links: {
       github: "https://github.com/devangumrane",
@@ -32,15 +32,15 @@ const PROJECTS = [
   {
     id: 2,
     title: "LetsInsurance Platform",
-    category: "Backend Services",
-    icon: FaDatabase,
-    tech: ["Node.js", "Express", "React.js"],
+    category: "Web Application",
+    icon: FaCode,
+    tech: ["React.js", "Figma", "Node.js"],
     description:
-      "Designed and implemented production-grade backend services for an insurance aggregation platform. Focused on modular API structure and decoupled architecture to ensure long-term scalability and ease of integration.",
+      "A third-party insurance platform for browsing, comparing, and managing insurance plans. Developed backend services for insurance flows and modular backend structure for scalability.",
     metrics: [
-      { label: "Role", value: "API Design" },
-      { label: "Stack", value: "MERN" },
-      { label: "System", value: "Scalable" },
+      { label: "Year", value: "2025" },
+      { label: "Status", value: "Development" },
+      { label: "Design", value: "Figma" },
     ],
     links: {
       github: "https://github.com/devangumrane",
@@ -50,15 +50,15 @@ const PROJECTS = [
   {
     id: 3,
     title: "PCMC Divyang System",
-    category: "Public Sector API",
+    category: "Government Project",
     icon: FaServer,
     tech: ["Node.js", "Express.js"],
     description:
-      "Developed mission-critical backend APIs for a government workflow management system. Engineered robust data validation and server-side processing to handle public sector requirements for Divyang services.",
+      "A government-focused system to manage workflows and data for Divyang (Persons with Disabilities) services under PCMC. Contributed to API development for workflow handling and data management.",
     metrics: [
+      { label: "Year", value: "2024" },
+      { label: "Impact", value: "Public" },
       { label: "Role", value: "Backend" },
-      { label: "Security", value: "High" },
-      { label: "Scale", value: "Regional" },
     ],
     links: {
       github: "https://github.com/devangumrane",
@@ -154,10 +154,10 @@ export default function Projects() {
         {PROJECTS.map((project, index) => (
           <motion.article
             key={project.id}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
+            transition={{ delay: index * 0.2, duration: 0.7 }}
             whileHover={{ y: -10 }}
             className="group rounded-3xl overflow-hidden flex flex-col transition-all duration-300 relative"
             style={{

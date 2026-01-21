@@ -32,22 +32,22 @@ const STATS = [
 
 const HIGHLIGHTS = [
   {
-    icon: FaServer,
-    title: "Backend Architecture",
+    icon: FaRocket,
+    title: "Backend Scalability",
     description:
-      "Expertise in designing and building scalable server-side systems using Node.js and Express.",
+      "Expertise in designing and building scalable RESTful APIs using Node.js and Express.",
   },
   {
-    icon: FaDatabase,
-    title: "Data Modeling",
+    icon: FaMobileAlt,
+    title: "Full-Stack MERN",
     description:
-      "Proficient in MongoDB schema optimization and indexing for production-ready performance.",
+      "Proficient in MongoDB, Express, React, and Node.js for comprehensive web solutions.",
   },
   {
-    icon: FaLock,
-    title: "Secure Auth & API",
+    icon: FaCode,
+    title: "Database Design",
     description:
-      "Implementing JWT, RBAC, and secure RESTful endpoints with a focus on technical integrity.",
+      "Strong command over MongoDB schema optimization and indexing for performance.",
   },
 ];
 
@@ -178,17 +178,44 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-6 mb-12 text-center max-w-4xl mx-auto"
+              className="space-y-6 mb-12 text-center max-w-3xl mx-auto"
             >
-              <p className="text-xl leading-relaxed text-[var(--color-text-secondary)]">
-                I am a <span className="text-[var(--color-primary)] font-bold uppercase">Backend-focused MERN Developer</span> with
-                a proven track record of designing and taking ownership of scalable RESTful APIs. My approach is centered on
-                technical credibility: building systems that are not just functional, but performant, secure, and production-ready.
+              <p
+                className="text-lg leading-relaxed"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                I'm a passionate{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  Backend-focused MERN Developer
+                </span>{" "}
+                with hands-on experience designing and building scalable RESTful APIs.
+                Seeking backend or MERN-focused roles where I can take ownership of APIs and backend systems.
               </p>
-              <p className="text-xl leading-relaxed text-[var(--color-text-secondary)]">
-                As a <span className="text-[var(--color-text-primary)] font-semibold">Backend Developer Intern at Altwise Pvt. Ltd.</span>,
-                I specialize in Node.js, Express, and MongoDB, handling everything from database schema optimization to complex
-                authentication flows. I focus on making the backend value unmistakable through clean architecture and robust error handling.
+              <p
+                className="text-lg leading-relaxed"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                I specialize in{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  Node.js
+                </span>
+                ,{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  Express
+                </span>
+                , and{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  MongoDB
+                </span>
+                , with a strong focus on authentication, data modeling, and performance optimization.
               </p>
             </motion.div>
 

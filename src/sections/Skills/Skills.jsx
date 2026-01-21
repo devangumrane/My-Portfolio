@@ -13,9 +13,6 @@ import {
   FaMobileAlt,
   FaTools,
   FaCreditCard,
-  FaTerminal,
-  FaCheckCircle,
-  FaLock,
 } from "react-icons/fa";
 import {
   SiDart,
@@ -29,8 +26,6 @@ import {
   SiAuth0,
   SiPostman,
   SiRazorpay,
-  SiReact,
-  SiPostgresql,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { MdDevices, MdSync } from "react-icons/md";
@@ -38,49 +33,60 @@ import { MdDevices, MdSync } from "react-icons/md";
 // --- Data Defined Outside ---
 const SKILL_CATEGORIES = [
   {
-    id: "backend",
-    title: "Backend Core",
-    icon: FaServer,
-    description: "Architecting scalable server-side solutions",
+    id: "lang",
+    title: "Programming Languages",
+    icon: FaCode,
+    description: "Core languages I use for development",
     items: [
-      { name: "Node.js (LTS)", icon: <FaServer />, level: 90 },
-      { name: "Express.js", icon: <FaServer />, level: 88 },
-      { name: "REST API Design", icon: <TbApi />, level: 92 },
-      { name: "JWT & Auth Flow", icon: <FaLock />, level: 85 },
+      { name: "JavaScript (ES6+)", icon: <SiJavascript />, level: 90 },
+      { name: "HTML5", icon: <FaCode />, level: 95 },
+      { name: "CSS3", icon: <FaCode />, level: 90 },
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend Development",
+    icon: FaServer,
+    description: "Server-side expertise",
+    items: [
+      { name: "Node.js", icon: <FaServer />, level: 85 },
+      { name: "Express.js", icon: <FaServer />, level: 82 },
+      { name: "REST API Development", icon: <TbApi />, level: 88 },
+    ],
+  },
+  {
+    id: "frontend",
+    title: "Frontend Development",
+    icon: FaMobileAlt,
+    description: "User interface technologies",
+    items: [
+      { name: "React.js", icon: <FaCode />, level: 80 },
     ],
   },
   {
     id: "database",
-    title: "Data Architecture",
+    title: "Databases & Tools",
     icon: FaDatabase,
-    description: "Designing and optimizing data layers",
+    description: "Storage and workflow tools",
     items: [
       { name: "MongoDB", icon: <SiMongodb />, level: 85 },
-      { name: "PostgreSQL", icon: <SiPostgresql />, level: 75 },
-      { name: "Schema Design", icon: <FaDatabase />, level: 88 },
-    ],
-  },
-  {
-    id: "development",
-    title: "Tools & Frontend",
-    icon: FaCode,
-    description: "Supporting tech stack",
-    items: [
-      { name: "React.js", icon: <SiReact />, level: 78 },
-      { name: "Postman", icon: <SiPostman />, level: 90 },
-      { name: "Git & GitHub", icon: <FaGitAlt />, level: 85 },
-      { name: "Linux/CLI", icon: <FaTerminal />, level: 80 },
+      { name: "PostgreSQL", icon: <FaDatabase />, level: 75 },
+      { name: "Git & GitHub", icon: <FaGitAlt />, level: 90 },
+      { name: "Postman", icon: <SiPostman />, level: 85 },
+      { name: "VS Code", icon: <FaCode />, level: 95 },
+      { name: "Figma", icon: <FaCode />, level: 70 },
     ],
   },
   {
     id: "soft",
-    title: "Technical Philosophy",
-    icon: FaCheckCircle,
-    description: "Professional mindset",
+    title: "Soft Skills",
+    icon: FaLayerGroup,
+    description: "Professional attributes",
     items: [
-      { name: "API Ownership", icon: <FaCheckCircle />, level: 95 },
-      { name: "Robust Error Handling", icon: <FaCheckCircle />, level: 90 },
-      { name: "Backend Scalability", icon: <FaCheckCircle />, level: 85 },
+      { name: "Problem Solving", icon: <FaCode />, level: 95 },
+      { name: "Ownership", icon: <FaCode />, level: 90 },
+      { name: "Adaptability", icon: <FaCode />, level: 85 },
+      { name: "Continuous Learning", icon: <FaCode />, level: 95 },
     ],
   },
 ];
@@ -133,10 +139,10 @@ export default function Skills() {
       {/* Header */}
       <div className="text-center mb-16">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
           <span
             className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full"

@@ -149,7 +149,7 @@ export default function Hero() {
           {/* Headline */}
           <div>
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] mb-6 uppercase"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] mb-6"
               style={{ color: "var(--color-text-primary)" }}
             >
               <motion.span
@@ -158,7 +158,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
-                Backend
+                Building digital
               </motion.span>
               <motion.span
                 className="text-gradient block pb-2" // pb-2 fixes gradient clipping
@@ -166,7 +166,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                Focused
+                experiences
               </motion.span>
               <motion.span
                 className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
@@ -174,7 +174,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                MERN Developer.
+                that matter.
               </motion.span>
             </motion.h1>
           </div>
@@ -184,11 +184,19 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg sm:text-xl md:text-max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed px-4"
             style={{ color: "var(--color-text-secondary)" }}
           >
-            Specializing in building scalable RESTful APIs, optimizing database schemas,
-            and architecting robust backend systems with <span className="font-semibold" style={{ color: "var(--color-primary)" }}>Node.js</span> and <span className="font-semibold" style={{ color: "var(--color-primary)" }}>MongoDB</span>.
+            Hi, I'm{" "}
+            <span
+              className="font-semibold relative inline-block group cursor-pointer"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Devang Umrane
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
+            </span>
+            . A Backend-focused MERN Developer creating scalable, human-centered
+            applications with modern technologies.
           </motion.p>
 
           {/* CTA Buttons */}

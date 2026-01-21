@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import CursorGlow from "./components/CursorGlow";
 import Hero from "./sections/Hero/Hero";
 import About from "./sections/About/About";
 import Skills from "./sections/Skills/Skills";
@@ -13,6 +14,7 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div className="relative min-h-screen bg-background text-textPrimary font-sans overflow-x-hidden selection:bg-primary selection:text-white">
+      <CursorGlow />
       {/* Background Gradients */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]" />

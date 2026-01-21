@@ -61,7 +61,7 @@ const PROJECTS = [
       { label: "Role", value: "Backend" },
     ],
     links: {
-      github: "https://github.com/devangumrane",
+      github: null,
       live: null,
     },
   },
@@ -271,22 +271,24 @@ export default function Projects() {
 
               {/* Action Buttons */}
               <div className="flex gap-4 mt-auto">
-                <motion.a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                  style={{
-                    backgroundColor: "var(--color-surface-accent)",
-                    color: "var(--color-text-primary)",
-                    border: "1px solid var(--color-border)",
-                  }}
-                >
-                  <FaGithub size={16} />
-                  <span>Code</span>
-                </motion.a>
+                {project.links.github && (
+                  <motion.a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex-1 text-center text-sm font-medium px-6 py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    style={{
+                      backgroundColor: "var(--color-surface-accent)",
+                      color: "var(--color-text-primary)",
+                      border: "1px solid var(--color-border)",
+                    }}
+                  >
+                    <FaGithub size={16} />
+                    <span>Code</span>
+                  </motion.a>
+                )}
 
                 {project.links.live && (
                   <motion.a

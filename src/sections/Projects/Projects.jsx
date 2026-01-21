@@ -13,38 +13,56 @@ import {
 const PROJECTS = [
   {
     id: 1,
-    title: "E-Commerce Mobile Application",
-    category: "Mobile Development",
-    icon: FaMobileAlt,
-    tech: ["Flutter", "Firebase", "Razorpay", "Hive"],
+    title: "QMS Application",
+    category: "Full-Stack Development",
+    icon: FaServer,
+    tech: ["Node.js", "Express", "MongoDB"],
     description:
-      "Cross-platform shopping app featuring secure payment integration, offline-first architecture with Hive caching, and a comprehensive product catalog serving 1000+ items.",
+      "A Quality Management System to manage audits, processes, and compliance workflows. Designed REST APIs for process management, audits, and role-based access.",
     metrics: [
-      { label: "Users", value: "500+" },
-      { label: "Success Rate", value: "99.8%" },
-      { label: "Faster Boot", value: "45%" },
+      { label: "Year", value: "2025" },
+      { label: "Status", value: "Upcoming" },
+      { label: "Arch", value: "Microservices" },
     ],
     links: {
-      github: "https://github.com/ShallowAwe",
-      live: null, // Add URL if available
+      github: "https://github.com/devangumrane",
+      live: null,
     },
   },
   {
     id: 2,
-    title: "Full-Stack Expense Tracker",
-    category: "Backend System",
-    icon: FaServer,
-    tech: ["Spring Boot", "MongoDB", "OAuth2", "React"],
+    title: "LetsInsurance Platform",
+    category: "Web Application",
+    icon: FaCode,
+    tech: ["React.js", "Figma", "Node.js"],
     description:
-      "Comprehensive expense management system with OAuth2 authentication, real-time synchronization, and interactive analytics dashboard handling high-volume transaction records.",
+      "A third-party insurance platform for browsing, comparing, and managing insurance plans. Developed backend services for insurance flows and modular backend structure for scalability.",
     metrics: [
-      { label: "Records", value: "10K+" },
-      { label: "Latency", value: "<1s" },
-      { label: "Sync", value: "Real-time" },
+      { label: "Year", value: "2025" },
+      { label: "Status", value: "Development" },
+      { label: "Design", value: "Figma" },
     ],
     links: {
-      github: "https://github.com/ShallowAwe",
-      live: "https://github.com/ShallowAwe", // Placeholder for demo
+      github: "https://github.com/devangumrane",
+      live: null,
+    },
+  },
+  {
+    id: 3,
+    title: "PCMC Divyang System",
+    category: "Government Project",
+    icon: FaServer,
+    tech: ["Node.js", "Express.js"],
+    description:
+      "A government-focused system to manage workflows and data for Divyang (Persons with Disabilities) services under PCMC. Contributed to API development for workflow handling and data management.",
+    metrics: [
+      { label: "Year", value: "2024" },
+      { label: "Impact", value: "Public" },
+      { label: "Role", value: "Backend" },
+    ],
+    links: {
+      github: "https://github.com/devangumrane",
+      live: null,
     },
   },
 ];
@@ -309,7 +327,7 @@ export default function Projects() {
           Curious about the code?
         </p>
         <a
-          href="https://github.com/ShallowAwe"
+          href="https://github.com/devangumrane"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-300 hover:scale-105"

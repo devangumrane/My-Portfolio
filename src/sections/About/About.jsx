@@ -9,7 +9,7 @@ import {
   FaCheckCircle,
   FaLayerGroup,
 } from "react-icons/fa";
-import profileImage from "../../assets/profile.png";
+import profileImage from "../../assets/profile.jpg";
 
 // Optimization: Static data defined outside
 const STATS = [
@@ -33,21 +33,21 @@ const STATS = [
 const HIGHLIGHTS = [
   {
     icon: FaRocket,
-    title: "Performance First",
+    title: "Backend Scalability",
     description:
-      "Building lightning-fast applications with optimized code and best practices.",
+      "Expertise in designing and building scalable RESTful APIs using Node.js and Express.",
   },
   {
     icon: FaMobileAlt,
-    title: "Mobile Expertise",
+    title: "Full-Stack MERN",
     description:
-      "Specializing in cross-platform Flutter apps with native performance.",
+      "Proficient in MongoDB, Express, React, and Node.js for comprehensive web solutions.",
   },
   {
     icon: FaCode,
-    title: "Clean Design",
+    title: "Database Design",
     description:
-      "Creating intuitive user interfaces that users love to interact with.",
+      "Strong command over MongoDB schema optimization and indexing for performance.",
   },
 ];
 
@@ -168,6 +168,7 @@ export default function About() {
                 src={profileImage}
                 alt="Profile"
                 className="w-full h-full object-cover"
+                style={{ objectPosition: "center 30%" }} // Focuses more on the face
               />
             </motion.div>
 
@@ -187,11 +188,10 @@ export default function About() {
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
-                  Full-Stack Developer
+                  Backend-focused MERN Developer
                 </span>{" "}
-                with expertise in building scalable mobile and web applications.
-                My journey in software development has been driven by a love for
-                creating elegant solutions to complex problems.
+                with hands-on experience designing and building scalable RESTful APIs.
+                Seeking backend or MERN-focused roles where I can take ownership of APIs and backend systems.
               </p>
               <p
                 className="text-lg leading-relaxed"
@@ -201,16 +201,21 @@ export default function About() {
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
-                  Flutter
+                  Node.js
                 </span>
                 ,{" "}
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
-                  Spring Boot
+                  Express
                 </span>
-                , and modern web technologies, with a strong focus on
-                performance optimization and user experience.
+                , and{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  MongoDB
+                </span>
+                , with a strong focus on authentication, data modeling, and performance optimization.
               </p>
             </motion.div>
 

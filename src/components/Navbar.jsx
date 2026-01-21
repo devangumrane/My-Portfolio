@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 // FIX: Import the image so the bundler handles it correctly
-import profileImage from "../assets/profile.png";
+import profileImage from "../assets/profile.jpg";
 
 // Optimization: Define static data outside the component
 const NAV_ITEMS = [
@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
-  { name: "Achievements", href: "#achievements" },
+
   { name: "Contact", href: "#contact" },
 ];
 
@@ -41,11 +41,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-panel shadow-lg border-b border-[var(--color-border)] py-3"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "glass-panel shadow-lg border-b border-[var(--color-border)] py-3"
+        : "bg-transparent py-5"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
@@ -59,7 +58,7 @@ export default function Navbar() {
               />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent">
-              RI
+              DU
             </span>
           </a>
 

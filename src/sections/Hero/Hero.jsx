@@ -13,17 +13,17 @@ const SOCIAL_LINKS = [
   {
     icon: FaGithub,
     label: "GitHub",
-    href: "https://github.com/ShallowAwe",
+    href: "https://github.com/devangumrane",
   },
   {
     icon: FaLinkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/Rudrankur_Indurkar",
+    href: "https://linkedin.com/in/devang-umrane-a94a871b6",
   },
   {
     icon: FaEnvelope,
     label: "Email",
-    href: "mailto:rudraindurkar670@gmail.com",
+    href: "mailto:devangumrane8888@gmail.com",
   },
 ];
 
@@ -192,10 +192,10 @@ export default function Hero() {
               className="font-semibold relative inline-block group cursor-pointer"
               style={{ color: "var(--color-primary)" }}
             >
-              Rudrankur Indurkar
+              Devang Umrane
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
             </span>
-            . A Full-Stack Developer creating scalable, human-centered
+            . A Backend-focused MERN Developer creating scalable, human-centered
             applications with modern technologies.
           </motion.p>
 

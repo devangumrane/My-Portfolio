@@ -1,23 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import profileImage from "../assets/profile.png";
+import profileImage from "../assets/profile.jpg";
 
 // Defined outside the component for better performance
 const SOCIALS = [
   {
     name: "GitHub",
-    url: "https://github.com/ShallowAwe",
+    url: "https://github.com/devangumrane",
     icon: FaGithub,
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/Rudrankur_Indurkar",
+    url: "https://linkedin.com/in/devang-umrane-a94a871b6",
     icon: FaLinkedin,
   },
   {
     name: "Email",
-    url: "mailto:rudraindurkar670@gmail.com",
+    url: "mailto:devangumrane8888@gmail.com",
     icon: FaEnvelope,
   },
 ];
@@ -28,7 +28,7 @@ const QUICK_LINKS = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
-  { name: "Achievements", href: "#achievements" },
+
 ];
 
 export default function Footer() {
@@ -96,7 +96,7 @@ export default function Footer() {
                 className="text-2xl font-bold tracking-tight"
                 style={{ color: "var(--color-text-primary)" }}
               >
-                RI<span className="text-gradient">.</span>
+                DU<span className="text-gradient">.</span>
               </h3>
             </div>
             <p
@@ -195,7 +195,7 @@ export default function Footer() {
             className="text-sm tracking-wide"
             style={{ color: "var(--color-text-secondary)" }}
           >
-            © {year} Rudrankur Indurkar. All Rights Reserved.
+            © {year} Devang Umrane. All Rights Reserved.
           </p>
           <p
             className="text-xs"

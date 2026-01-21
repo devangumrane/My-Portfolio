@@ -105,28 +105,28 @@ export default function Contact() {
               <ContactCard
                 icon={FaEnvelope}
                 title="Email"
-                value="rudraindurkar670@gmail.com"
-                href="mailto:rudraindurkar670@gmail.com"
+                value="devangumrane8888@gmail.com"
+                href="mailto:devangumrane8888@gmail.com"
                 delay={0}
               />
               <ContactCard
                 icon={FaLinkedin}
                 title="LinkedIn"
                 value="Connect on LinkedIn"
-                href="https://linkedin.com/in/Rudrankur_Indurkar"
+                href="https://linkedin.com/in/devang-umrane-a94a871b6"
                 delay={0.1}
               />
               <ContactCard
                 icon={FaGithub}
                 title="GitHub"
                 value="Follow on GitHub"
-                href="https://github.com/ShallowAwe"
+                href="https://github.com/devangumrane"
                 delay={0.2}
               />
               <ContactCard
                 icon={FaMapMarkerAlt}
                 title="Location"
-                value="Aurangabad, Maharashtra"
+                value="Pune, India"
                 delay={0.3}
               />
             </div>

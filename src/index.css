@@ -4,36 +4,36 @@
 /* Modern Minimal Theme — Design Tokens                                      */
 /* -------------------------------------------------------------------------- */
 :root {
-  /* Light Mode (Warmer/Amber-ish) */
-  --color-primary: #f59e0b;          /* Amber 500 */
-  --color-primary-hover: #d97706;    /* Amber 600 */
-  --color-accent: #fbbf24;           /* Amber 400 */
-  --color-background: #fffbeb;       /* Amber 50 - Warmer background */
+  /* Light Mode (Cool/Blue-ish) */
+  --color-primary: #96CBFA;          /* Requested Blue */
+  --color-primary-hover: #5B6DA6;    /* Requested Indigo-ish */
+  --color-accent: #B7EFFA;           /* Requested Light Blue */
+  --color-background: #F2FCFF;       /* Requested Very Light Blue */
   --color-surface: #ffffff;          /* White */
-  --color-surface-hover: #fff7ed;    /* Orange 50 */
-  --color-surface-glass: rgba(255, 251, 235, 0.7); /* Warm translucent */
-  --color-surface-glass-hover: rgba(255, 251, 235, 0.9);
-  --color-surface-accent: rgba(245, 158, 11, 0.1);
-  --color-text-primary: #451a03;     /* Amber 950 - softer than black */
-  --color-text-secondary: #78350f;   /* Amber 900 */
-  --color-border: rgba(148, 96, 7, 0.25);
-  --color-shadow: rgba(245, 159, 11, 0.15); /* Warm shadow */
+  --color-surface-hover: #e0f2fe;    /* Light blue hover */
+  --color-surface-glass: rgba(242, 252, 255, 0.7); /* Translucent background */
+  --color-surface-glass-hover: rgba(242, 252, 255, 0.9);
+  --color-surface-accent: rgba(150, 203, 250, 0.1);
+  --color-text-primary: #2C325C;     /* Requested Deep Blue */
+  --color-text-secondary: #5B6DA6;   /* Requested Indigo-ish */
+  --color-border: rgba(44, 50, 92, 0.1);
+  --color-shadow: rgba(44, 50, 92, 0.05); /* Soft shadow */
 }
 
 .dark {
-  /* Dark Mode */
-  --color-primary: #f59e0b;          /* Amber 500 */
-  --color-primary-hover: #d97706;    /* Amber 600 */
-  --color-accent: #fbbf24;           /* Amber 400 */
-  --color-background: #0f0a05;       /* Very dark warm black */
-  --color-surface: #1c1410;          /* Dark warm surface */
-  --color-surface-hover: #2a1b15;
-  --color-surface-glass: rgba(28, 20, 16, 0.5);
-  --color-surface-glass-hover: rgba(28, 20, 16, 0.8);
+  /* Dark Mode (Keeping it similar but darker versions of requested colors) */
+  --color-primary: #96CBFA;          
+  --color-primary-hover: #B7EFFA;    
+  --color-accent: #5B6DA6;           
+  --color-background: #0a0e1a;       /* Dark Navy */
+  --color-surface: #141b2d;          /* Dark Surface */
+  --color-surface-hover: #1f2937;
+  --color-surface-glass: rgba(20, 27, 45, 0.5);
+  --color-surface-glass-hover: rgba(20, 27, 45, 0.8);
   --color-surface-accent: rgba(255, 255, 255, 0.05);
-  --color-text-primary: #fffbeb;     /* Amber 50 */
-  --color-text-secondary: #d6d3d1;   /* Stone 300 */
-  --color-border: rgba(245, 158, 11, 0.15);
+  --color-text-primary: #F2FCFF;     
+  --color-text-secondary: #96CBFA;   
+  --color-border: rgba(150, 203, 250, 0.15);
   --color-shadow: rgba(0, 0, 0, 0.5);
 }
 

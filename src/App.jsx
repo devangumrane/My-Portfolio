@@ -6,7 +6,7 @@ import Skills from "./sections/Skills/Skills";
 import Experience from "./sections/Experience/Experience";
 import Projects from "./sections/Projects/Projects";
 import Education from "./sections/Education/Education";
-import Achievements from "./sections/Achievements/Achievements";
+
 import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer";
 
@@ -28,7 +28,7 @@ export default function App() {
         <Experience />
         <Projects />
         <Education />
-        <Achievements />
+
         <Contact />
       </main>
 

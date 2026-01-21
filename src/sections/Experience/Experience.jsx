@@ -12,19 +12,18 @@ import {
 const EXPERIENCES = [
   {
     id: 1,
-    role: "Flutter / Java Developer",
-    company: "Altwise",
-    location: "Pune, Maharashtra",
-    period: "June 2024 – Present",
+    role: "Backend Developer Intern",
+    company: "Altwise Pvt. Ltd.",
+    location: "Pune, India",
+    period: "Jan 2024 – Present",
     isCurrent: true,
     achievements: [
-      "Developed 3 cross-platform mobile apps for 500+ active users with seamless Android & iOS compatibility.",
-      "Engineered responsive UI components and micro-animations, achieving 40% faster load times.",
-      "Implemented Riverpod-based state management, improving performance by 35% and reducing code complexity.",
-      "Integrated Firebase real-time services and RESTful APIs, cutting sync latency by 60%.",
-      "Led daily code reviews maintaining 95% code-quality standards and zero missed deadlines.",
+      "API Development: Developing RESTful APIs using Node.js and Express for internal applications.",
+      "Database Design: Designed and optimized MongoDB schemas with indexing for performance.",
+      "Authentication: Implemented JWT-based authentication and role-based access control.",
+      "Collaboration: Worked with Git/GitHub in agile sprints with code reviews and issue tracking.",
     ],
-    techStack: ["Flutter", "Dart", "Java", "Riverpod", "Firebase", "REST API"],
+    techStack: ["Node.js", "Express", "MongoDB", "JWT", "Git"],
   },
 ];
 

@@ -296,13 +296,6 @@ export default function Education() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-8 text-center"
         >
-          <p
-            className="text-sm max-w-2xl mx-auto italic"
-            style={{ color: "var(--color-text-secondary)", opacity: 0.7 }}
-          >
-            "Education is not the filling of a pail, but the lighting of a
-            fire."
-          </p>
         </motion.div>
       </div>
     </section>
